@@ -9,6 +9,7 @@ public class RacingcarController {
 
     public void run() {
         String rawCarNames = getRawCarNames();
+        String rawTotalRound = getRawTotalRound();
     }
 
     private String getRawCarNames() {
@@ -18,6 +19,6 @@ public class RacingcarController {
 
     private String getRawTotalRound() {
         outputView.printTotalRoundInputGuide();
-        return "";
+        return inputView.getUserInput();
     }
 }
