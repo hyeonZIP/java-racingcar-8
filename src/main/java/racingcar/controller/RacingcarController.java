@@ -15,4 +15,9 @@ public class RacingcarController {
         outputView.printRacingcarNameInputGuide();
         return inputView.getUserInput();
     }
+
+    private String getRawTotalRound() {
+        outputView.printTotalRoundInputGuide();
+        return "";
+    }
 }
