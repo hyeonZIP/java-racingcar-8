@@ -8,7 +8,11 @@ public class RacingcarController {
     private final InputView inputView = new InputView();
 
     public void run() {
+        String rawCarNames = getRawCarNames();
+    }
+
+    private String getRawCarNames() {
         outputView.printRacingcarNameInputGuide();
-        String userInput = inputView.getUserInput();
+        return inputView.getUserInput();
     }
 }
