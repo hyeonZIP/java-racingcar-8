@@ -14,16 +14,20 @@ public class RacingcarController {
     private final InputView inputView = new InputView();
 
     public void run() {
-        String rawCarNames = getRawCarNames();
-        String rawTotalRound = getRawTotalRound();
-
-        ParsedInput input = ParsedInput.parse(rawCarNames, rawTotalRound);
+        ParsedInput input = getUserInput();
 
         RacingGame racingGame = RacingGame.initializeRacingGame(input);
 
         playRounds(racingGame);
 
         printWinners(racingGame);
+    }
+
+    private ParsedInput getUserInput() {
+        String rawCarNames = getRawCarNames();
+        String rawTotalRound = getRawTotalRound();
+
+        return ParsedInput.parse(rawCarNames, rawTotalRound);
     }
 
     private void printWinners(RacingGame racingGame) {
@@ -46,11 +50,13 @@ public class RacingcarController {
 
     private String getRawCarNames() {
         outputView.printRacingcarNameInputGuide();
+
         return inputView.getUserInput();
     }
 
     private String getRawTotalRound() {
         outputView.printTotalRoundInputGuide();
+
         return inputView.getUserInput();
     }
 }
