@@ -21,6 +21,10 @@ public class Car {
         return new Car(name);
     }
 
+    public void increasePosition() {
+        this.position++;
+    }
+
     public int getPosition() {
         return position;
     }

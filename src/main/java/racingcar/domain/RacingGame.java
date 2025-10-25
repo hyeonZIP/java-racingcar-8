@@ -23,4 +23,9 @@ public class RacingGame {
     public boolean isFinalRound() {
         return currentRound.equals(totalRound);
     }
+
+    public void playRound() {
+        cars.move();
+        currentRound = currentRound.nextRound();
+    }
 }

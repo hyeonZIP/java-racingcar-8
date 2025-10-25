@@ -24,6 +24,7 @@ public class RacingcarController {
         outputView.printRoundResultGuide();
 
         while (racingGame.isFinalRound()) {
+            racingGame.playRound();
         }
     }
 

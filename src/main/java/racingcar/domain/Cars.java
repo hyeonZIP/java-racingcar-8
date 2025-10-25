@@ -7,9 +7,11 @@ import racingcar.exception.ExceptionMessage;
 
 public class Cars {
     private final List<Car> cars;
+    private final MoveStrategy moveStrategy;
 
     private Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
     public static Cars register(String[] carNames) {
@@ -22,9 +24,19 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public void move() {
+        cars.forEach(this::tryMove);
+    }
+
     private static void validateEmpty(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.CARS_NOT_EMPTY.getMessage());
+        }
+    }
+
+    private void tryMove(Car car) {
+        if (moveStrategy.canMove()) {
+            car.increasePosition();
         }
     }
 }

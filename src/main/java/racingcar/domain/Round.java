@@ -25,6 +25,10 @@ public class Round {
         return new Round(INITIAL_ROUND);
     }
 
+    public Round nextRound() {
+        return new Round(round + 1);
+    }
+
     private static void validateMaximumRound(int totalRound) {
         if (totalRound > MAXIMUM_ROUND) {
             throw new IllegalArgumentException(ExceptionMessage.TOTAL_ROUND_OVER_MAXIMUM.getMessage());
