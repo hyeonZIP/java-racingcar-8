@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import racingcar.exception.ExceptionMessage;
 
@@ -22,6 +23,10 @@ public class Cars {
         validateEmpty(cars);
 
         return new Cars(cars);
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void move() {

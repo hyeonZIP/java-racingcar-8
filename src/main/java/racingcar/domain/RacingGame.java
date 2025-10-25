@@ -28,4 +28,8 @@ public class RacingGame {
         cars.move();
         currentRound = currentRound.nextRound();
     }
+
+    public Cars getCars() {
+        return cars;
+    }
 }

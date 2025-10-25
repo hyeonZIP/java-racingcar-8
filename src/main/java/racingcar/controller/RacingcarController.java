@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import racingcar.domain.RacingGame;
+import racingcar.dto.RoundResult;
+import racingcar.mapper.RoundResultMapper;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.vo.ParsedInput;
@@ -25,6 +27,7 @@ public class RacingcarController {
 
         while (racingGame.isFinalRound()) {
             racingGame.playRound();
+            RoundResult roundResult = RoundResultMapper.toDto(racingGame.getCars());
         }
     }
 

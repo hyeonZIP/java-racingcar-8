@@ -29,6 +29,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private static void validateCarName(String name) {
         validateBlank(name);
         validateLength(name);
