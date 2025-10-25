@@ -11,6 +11,10 @@ public enum ExceptionMessage {
     // ParsedInput
     INPUT_NOT_BLANK("[ERROR] 입력값이 비어있을 수 없습니다."),
     INPUT_NOT_INTEGER("[ERROR] 유효하지 않은 정수값 입니다."),
+
+    // Round
+    TOTAL_ROUND_OVER_MAXIMUM("[ERROR] 초기 시도 횟수는 최대값을 초과할 수 없습니다."),
+    TOTAL_ROUND_UNDER_MINIMUM("[ERROR] 초기 시도 횟수는 최소값 미만일 수 없습니다."),
     ;
 
     private final String message;
