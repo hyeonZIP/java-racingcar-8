@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.vo.ParsedInput;
 
 public class RacingGame {
@@ -31,5 +32,9 @@ public class RacingGame {
 
     public Cars getCars() {
         return cars;
+    }
+
+    public List<Car> getGameWinners() {
+        return cars.getGameWinners();
     }
 }

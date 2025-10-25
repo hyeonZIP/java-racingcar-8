@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.RacingGame;
+import racingcar.dto.GameWinners;
 import racingcar.dto.RoundResult;
+import racingcar.mapper.GameWinnersMapper;
 import racingcar.mapper.RoundResultMapper;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -20,6 +22,12 @@ public class RacingcarController {
         RacingGame racingGame = RacingGame.initializeRacingGame(input);
 
         playRounds(racingGame);
+
+        printWinners(racingGame);
+    }
+
+    private void printWinners(RacingGame racingGame) {
+        GameWinners gameWinners = GameWinnersMapper.toDto(racingGame.getGameWinners());
     }
 
     private void playRounds(RacingGame racingGame) {
