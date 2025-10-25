@@ -1,7 +1,9 @@
 package racingcar.controller;
 
+import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.vo.ParsedInput;
 
 public class RacingcarController {
     private final OutputView outputView = new OutputView();
@@ -10,6 +12,10 @@ public class RacingcarController {
     public void run() {
         String rawCarNames = getRawCarNames();
         String rawTotalRound = getRawTotalRound();
+
+        ParsedInput input = ParsedInput.parse(rawCarNames, rawTotalRound);
+
+        RacingGame racingGame = RacingGame.initializeRacingGame(input);
     }
 
     private String getRawCarNames() {
