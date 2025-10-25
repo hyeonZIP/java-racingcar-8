@@ -7,6 +7,10 @@ public enum ExceptionMessage {
 
     // Cars
     CARS_NOT_EMPTY("[ERROR] 최소 한 개 이상의 객체가 저장되어야 합니다."),
+
+    // ParsedInput
+    INPUT_NOT_BLANK("[ERROR] 입력값이 비어있을 수 없습니다."),
+    INPUT_NOT_INTEGER("[ERROR] 유효하지 않은 정수값 입니다."),
     ;
 
     private final String message;
