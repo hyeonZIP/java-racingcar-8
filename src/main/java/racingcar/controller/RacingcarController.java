@@ -22,6 +22,9 @@ public class RacingcarController {
 
     private void playRounds(RacingGame racingGame) {
         outputView.printRoundResultGuide();
+
+        while (racingGame.isFinalRound()) {
+        }
     }
 
     private String getRawCarNames() {
