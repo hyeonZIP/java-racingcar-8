@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Objects;
 import racingcar.exception.ExceptionMessage;
 
 public class Round {
@@ -41,21 +40,7 @@ public class Round {
         }
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Round that)) {
-            return false;
-        }
-
-        return Objects.equals(round, that.round);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(round);
+    public boolean hasNextRound(Round totalRound) {
+        return this.round < totalRound.round;
     }
 }

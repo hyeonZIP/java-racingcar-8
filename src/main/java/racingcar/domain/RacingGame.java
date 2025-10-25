@@ -20,8 +20,8 @@ public class RacingGame {
         return new RacingGame(cars, totalRound);
     }
 
-    public boolean isFinalRound() {
-        return currentRound.equals(totalRound);
+    public boolean hasMoreRound() {
+        return currentRound.hasNextRound(totalRound);
     }
 
     public void playRound() {

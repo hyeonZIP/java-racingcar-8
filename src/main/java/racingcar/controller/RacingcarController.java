@@ -25,7 +25,7 @@ public class RacingcarController {
     private void playRounds(RacingGame racingGame) {
         outputView.printRoundResultGuide();
 
-        while (racingGame.isFinalRound()) {
+        while (racingGame.hasMoreRound()) {
             racingGame.playRound();
             RoundResult roundResult = RoundResultMapper.toDto(racingGame.getCars());
         }
