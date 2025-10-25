@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.dto.GameWinners;
 import racingcar.dto.RoundResult;
 import racingcar.dto.RoundResultDetails;
 
@@ -8,6 +9,8 @@ public class OutputView {
     private static final String TOTAL_ROUND_ENTER_GUIDE = "시도할 횟수는 몇 회인가요?";
     private static final String ROUND_RESULT_GUIDE = "\n실행 결과";
     private static final String CAR_POSITION_FORMAT = "%s : %s";
+    private static final String GAME_WINNERS_FORMAT = "최종 우승자 : %s";
+    private static final String COMMA = ",";
     private static final String NEW_LINE = "\n";
     private static final String DASH = "-";
 
@@ -27,6 +30,21 @@ public class OutputView {
         String output = buildRoundResultOutput(roundResult);
 
         System.out.println(output);
+    }
+
+    public void printGameWinners(GameWinners gameWinners) {
+        String output = buildGameWinnersOutput(gameWinners);
+
+        System.out.println(output);
+    }
+
+    private String buildGameWinnersOutput(GameWinners gameWinners) {
+        StringBuilder output = new StringBuilder();
+
+        gameWinners.gameWinners()
+                .forEach(text -> output.append(text).append(COMMA));
+
+        return String.format(GAME_WINNERS_FORMAT, output);
     }
 
     private String buildRoundResultOutput(RoundResult roundResult) {

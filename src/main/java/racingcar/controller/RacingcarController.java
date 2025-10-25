@@ -28,6 +28,8 @@ public class RacingcarController {
 
     private void printWinners(RacingGame racingGame) {
         GameWinners gameWinners = GameWinnersMapper.toDto(racingGame.getGameWinners());
+
+        outputView.printGameWinners(gameWinners);
     }
 
     private void playRounds(RacingGame racingGame) {
