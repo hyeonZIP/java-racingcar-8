@@ -8,17 +8,17 @@ public class Round {
     private static final int MINIMUM_ROUND = 1;
     private static final int INITIAL_ROUND = 0;
 
-    private final int totalRound;
+    private final int round;
 
-    private Round(int totalRound) {
-        this.totalRound = totalRound;
+    private Round(int round) {
+        this.round = round;
     }
 
-    public static Round of(int totalRound) {
-        validateMaximumRound(totalRound);
-        validateMinimumRound(totalRound);
+    public static Round of(int round) {
+        validateMaximumRound(round);
+        validateMinimumRound(round);
 
-        return new Round(totalRound);
+        return new Round(round);
     }
 
     public static Round initialRound() {
@@ -47,11 +47,11 @@ public class Round {
             return false;
         }
 
-        return Objects.equals(totalRound, that.totalRound);
+        return Objects.equals(round, that.round);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(totalRound);
+        return Objects.hash(round);
     }
 }
