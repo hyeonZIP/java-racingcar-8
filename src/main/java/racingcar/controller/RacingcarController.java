@@ -16,6 +16,12 @@ public class RacingcarController {
         ParsedInput input = ParsedInput.parse(rawCarNames, rawTotalRound);
 
         RacingGame racingGame = RacingGame.initializeRacingGame(input);
+
+        playRounds(racingGame);
+    }
+
+    private void playRounds(RacingGame racingGame) {
+        outputView.printRoundResultGuide();
     }
 
     private String getRawCarNames() {
