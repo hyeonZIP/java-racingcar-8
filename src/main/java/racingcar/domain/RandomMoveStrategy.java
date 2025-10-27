@@ -9,6 +9,12 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean canMove() {
-        return Randoms.pickNumberInRange(MINIMUM_RANDOM_RANGE, MAXIMUM_RANDOM_RANGE) >= MOVE_THRESHOLD;
+        int randomNumber = generateRandomNumber();
+
+        return randomNumber >= MOVE_THRESHOLD;
+    }
+
+    private int generateRandomNumber() {
+        return Randoms.pickNumberInRange(MINIMUM_RANDOM_RANGE, MAXIMUM_RANDOM_RANGE);
     }
 }
