@@ -27,7 +27,7 @@ class ParsedInputTest {
         @Test
         @DisplayName("자동차 이름이 공백이면 예외가 발생한다")
         void emptyCarNames() {
-            assertThatThrownBy(ParsedInputFixture::createEmptyCarNamesInput)
+            assertThatThrownBy(() -> ParsedInputFixture.createCustomCarNamesInput(""))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INPUT_NOT_BLANK.getMessage());
         }
@@ -35,7 +35,7 @@ class ParsedInputTest {
         @Test
         @DisplayName("시도 횟수가 공백이면 예외가 발생한다")
         void emptyTotalRound() {
-            assertThatThrownBy(ParsedInputFixture::createEmptyTotalRoundInput)
+            assertThatThrownBy(() -> ParsedInputFixture.createCustomRoundInput(""))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INPUT_NOT_BLANK.getMessage());
         }
@@ -43,7 +43,7 @@ class ParsedInputTest {
         @Test
         @DisplayName("시도 횟수가 정수가 아니면 예외가 발생한다")
         void notIntegerTotalRound() {
-            assertThatThrownBy(ParsedInputFixture::createNotIntegerTotalRoundInput)
+            assertThatThrownBy(() -> ParsedInputFixture.createCustomRoundInput("not digit"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INPUT_NOT_INTEGER.getMessage());
         }
@@ -51,7 +51,7 @@ class ParsedInputTest {
         @Test
         @DisplayName("시도 횟수가 Integer 표현 범위를 벗어난 값이면 예외가 발생한다")
         void outOfIntegerTotalRound() {
-            assertThatThrownBy(ParsedInputFixture::createOutOfIntegerTotalRoundInput)
+            assertThatThrownBy(() -> ParsedInputFixture.createCustomRoundInput(String.valueOf(Long.MAX_VALUE)))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INPUT_NOT_INTEGER.getMessage());
         }
