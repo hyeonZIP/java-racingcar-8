@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.exception.ExceptionMessage;
 
@@ -48,5 +49,22 @@ public class Car {
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_OUT_OF_LENGTH.getMessage());
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Car other)) {
+            return false;
+        }
+
+        return name.equals(other.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

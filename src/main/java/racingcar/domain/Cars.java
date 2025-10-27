@@ -20,7 +20,7 @@ public class Cars {
                 .map(Car::register)
                 .toList();
 
-        validateEmpty(cars);
+        validateCars(cars);
 
         return new Cars(cars);
     }
@@ -48,15 +48,26 @@ public class Cars {
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.CARS_NOT_EMPTY.getMessage()));
     }
 
-    private static void validateEmpty(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException(ExceptionMessage.CARS_NOT_EMPTY.getMessage());
-        }
-    }
-
     private void tryMove(Car car) {
         if (moveStrategy.canMove()) {
             car.increasePosition();
+        }
+    }
+
+    private static void validateCars(List<Car> cars) {
+        validateEmpty(cars);
+        validateDuplicate(cars);
+    }
+
+    private static void validateDuplicate(List<Car> cars) {
+        if (cars.size() != cars.stream().distinct().toList().size()) {
+            throw new IllegalArgumentException(ExceptionMessage.CARS_DUPLICATE.getMessage());
+        }
+    }
+
+    private static void validateEmpty(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException(ExceptionMessage.CARS_NOT_EMPTY.getMessage());
         }
     }
 }

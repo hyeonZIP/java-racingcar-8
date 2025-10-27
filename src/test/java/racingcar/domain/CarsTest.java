@@ -35,5 +35,15 @@ class CarsTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.CARS_NOT_EMPTY.getMessage());
         }
+
+        @Test
+        @DisplayName("자동차 이름이 중복되면 예외가 발생한다")
+        void isDuplicate() {
+            String[] carNames = new String[]{"pobi", "pobi", "pobi"};
+
+            assertThatThrownBy(() -> Cars.register(carNames))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ExceptionMessage.CARS_DUPLICATE.getMessage());
+        }
     }
 }
