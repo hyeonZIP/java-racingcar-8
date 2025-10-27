@@ -1,8 +1,10 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,36 @@ class CarsTest {
             String[] carNames = new String[]{"pobi", "woni", "jun"};
 
             assertDoesNotThrow(() -> Cars.register(carNames));
+        }
+
+        @Test
+        @DisplayName("모든 자동차가 같은 위치면 모두 반환한다")
+        void getGameWinners() {
+            String[] carNames = new String[]{"pobi", "woni", "jun"};
+            Cars cars = Cars.register(carNames);
+            int maxPosition = cars.getMaxPosition();
+
+            assertThat(maxPosition).isEqualTo(0);
+            assertThat(cars.getGameWinners(maxPosition)).containsExactly(cars.getCars().toArray(new Car[0]));
+        }
+
+        @Test
+        @DisplayName("우승자는 다른 자동차들 보다 같거나 멀리 간 자동차다")
+        void checkWinnersPosition() {
+            String[] carNames = new String[]{"pobi", "woni", "jun"};
+            Cars cars = Cars.register(carNames);
+
+            for (int i = 0; i < 60; i++) {
+                cars.move();
+            }
+
+            int maxPosition = cars.getMaxPosition();
+
+            List<Car> allCars = cars.getCars();
+            List<Car> winners = cars.getGameWinners(maxPosition);
+
+            assertThat(winners).allMatch(car -> car.getPosition() == maxPosition);
+            assertThat(allCars).allMatch(car -> car.getPosition() <= maxPosition);
         }
     }
 
