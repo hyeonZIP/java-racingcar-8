@@ -21,5 +21,17 @@ class RacingGameTest {
 
             assertThat(racingGame.hasMoreRound()).isTrue();
         }
+
+        @Test
+        @DisplayName("마지막 시도 횟수라면 false를 반환한다")
+        void hasMoreRound() {
+            ParsedInput parsedInput = ParsedInputFixture.createCustomRoundInput("2");
+            RacingGame racingGame = RacingGame.initializeRacingGame(parsedInput);
+
+            racingGame.playRound();
+            racingGame.playRound();
+
+            assertThat(racingGame.hasMoreRound()).isFalse();
+        }
     }
 }
