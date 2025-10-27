@@ -10,7 +10,7 @@ public class OutputView {
     private static final String ROUND_RESULT_GUIDE = "\n실행 결과";
     private static final String CAR_POSITION_FORMAT = "%s : %s";
     private static final String GAME_WINNERS_FORMAT = "최종 우승자 : %s";
-    private static final String COMMA = ",";
+    private static final String COMMA = ", ";
     private static final String NEW_LINE = "\n";
     private static final String DASH = "-";
 
