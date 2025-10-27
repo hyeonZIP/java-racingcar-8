@@ -20,6 +20,19 @@ class CarTest {
 
             assertThat(car.getPosition()).isEqualTo(0);
         }
+
+        @Test
+        @DisplayName("자동차를 이동시키면 +1이 된다")
+        void moveCar() {
+            Car car = Car.register("pobi");
+
+            car.increasePosition();
+            assertThat(car.getPosition()).isEqualTo(1);
+            car.increasePosition();
+            assertThat(car.getPosition()).isEqualTo(2);
+            car.increasePosition();
+            assertThat(car.getPosition()).isEqualTo(3);
+        }
     }
 
     @Nested
