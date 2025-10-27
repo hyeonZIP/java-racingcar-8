@@ -28,10 +28,8 @@ class CarsTest {
         void getGameWinners() {
             String[] carNames = new String[]{"pobi", "woni", "jun"};
             Cars cars = Cars.register(carNames);
-            int maxPosition = cars.getMaxPosition();
 
-            assertThat(maxPosition).isEqualTo(0);
-            assertThat(cars.getGameWinners(maxPosition)).containsExactly(cars.getCars().toArray(new Car[0]));
+            assertThat(cars.getGameWinners()).containsExactly(cars.getCars().toArray(new Car[0]));
         }
 
         @Test
@@ -44,10 +42,10 @@ class CarsTest {
                 cars.move();
             }
 
-            int maxPosition = cars.getMaxPosition();
-
             List<Car> allCars = cars.getCars();
-            List<Car> winners = cars.getGameWinners(maxPosition);
+            List<Car> winners = cars.getGameWinners();
+
+            int maxPosition = winners.getFirst().getPosition();
 
             assertThat(winners).allMatch(car -> car.getPosition() == maxPosition);
             assertThat(allCars).allMatch(car -> car.getPosition() <= maxPosition);

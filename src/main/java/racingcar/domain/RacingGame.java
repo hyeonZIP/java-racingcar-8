@@ -35,8 +35,6 @@ public class RacingGame {
     }
 
     public List<Car> getGameWinners() {
-        int maxPosition = cars.getMaxPosition();
-
-        return cars.getGameWinners(maxPosition);
+        return cars.getGameWinners();
     }
 }
