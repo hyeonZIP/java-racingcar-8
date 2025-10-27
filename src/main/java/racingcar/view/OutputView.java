@@ -39,12 +39,9 @@ public class OutputView {
     }
 
     private String buildGameWinnersOutput(GameWinners gameWinners) {
-        StringBuilder output = new StringBuilder();
+        String winners = String.join(COMMA, gameWinners.gameWinners());
 
-        gameWinners.gameWinners()
-                .forEach(text -> output.append(text).append(COMMA));
-
-        return String.format(GAME_WINNERS_FORMAT, output);
+        return String.format(GAME_WINNERS_FORMAT, winners);
     }
 
     private String buildRoundResultOutput(RoundResult roundResult) {
