@@ -15,8 +15,8 @@ public class Cars {
         this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public static Cars register(String[] carNames) {
-        List<Car> cars = Arrays.stream(carNames)
+    public static Cars register(List<String> carNames) {
+        List<Car> cars = carNames.stream()
                 .map(Car::register)
                 .toList();
 

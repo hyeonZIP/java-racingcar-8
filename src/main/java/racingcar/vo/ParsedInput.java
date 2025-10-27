@@ -1,23 +1,25 @@
 package racingcar.vo;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.exception.ExceptionMessage;
 
-public record ParsedInput(String[] carNames, int totalRound) {
+public record ParsedInput(List<String> carNames, int totalRound) {
     private static final String COMMA = ",";
 
     public static ParsedInput parse(String rawCarNames, String rawTotalRound) {
 
-        String[] carNames = parseCarNames(rawCarNames);
+        List<String> carNames = parseCarNames(rawCarNames);
         int totalRound = parseTotalRound(rawTotalRound);
 
         return new ParsedInput(carNames, totalRound);
     }
 
-    private static String[] parseCarNames(String rawCarNames) {
+    private static List<String> parseCarNames(String rawCarNames) {
         validateBlank(rawCarNames);
 
-        return rawCarNames.split(COMMA);
+        return Arrays.stream(rawCarNames.split(COMMA)).toList();
     }
 
     private static int parseTotalRound(String rawTotalRound) {

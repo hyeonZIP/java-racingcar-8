@@ -18,7 +18,7 @@ class CarsTest {
         @Test
         @DisplayName("자동차 이름이 담긴 배열이 오면 객체 리스트로 저장한다")
         void registerCarNames() {
-            String[] carNames = new String[]{"pobi", "woni", "jun"};
+            List<String> carNames = List.of("pobi", "woni", "jun");
 
             assertDoesNotThrow(() -> Cars.register(carNames));
         }
@@ -26,7 +26,7 @@ class CarsTest {
         @Test
         @DisplayName("모든 자동차가 같은 위치면 모두 반환한다")
         void getGameWinners() {
-            String[] carNames = new String[]{"pobi", "woni", "jun"};
+            List<String> carNames = List.of("pobi", "woni", "jun");
             Cars cars = Cars.register(carNames);
 
             assertThat(cars.getGameWinners()).containsExactly(cars.getCars().toArray(new Car[0]));
@@ -35,7 +35,7 @@ class CarsTest {
         @Test
         @DisplayName("우승자는 다른 자동차들 보다 같거나 멀리 간 자동차다")
         void checkWinnersPosition() {
-            String[] carNames = new String[]{"pobi", "woni", "jun"};
+            List<String> carNames = List.of("pobi", "woni", "jun");
             Cars cars = Cars.register(carNames);
 
             for (int i = 0; i < 60; i++) {
@@ -59,7 +59,7 @@ class CarsTest {
         @Test
         @DisplayName("자동차 객체가 비어있으면 예외가 발생한다")
         void isEmpty() {
-            String[] carNames = new String[]{};
+            List<String> carNames = List.of();
 
             assertThatThrownBy(() -> Cars.register(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -69,7 +69,7 @@ class CarsTest {
         @Test
         @DisplayName("자동차 이름이 중복되면 예외가 발생한다")
         void isDuplicate() {
-            String[] carNames = new String[]{"pobi", "pobi", "pobi"};
+            List<String> carNames = List.of("pobi", "pobi", "pobi");
 
             assertThatThrownBy(() -> Cars.register(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
