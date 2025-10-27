@@ -43,7 +43,7 @@ class RoundTest {
 
             assertThatThrownBy(() -> Round.of(totalRound))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ExceptionMessage.TOTAL_ROUND_OVER_MAXIMUM.getMessage());
+                    .hasMessage(ExceptionMessage.TOTAL_ROUND_UNDER_MINIMUM.getMessage());
         }
     }
 }
