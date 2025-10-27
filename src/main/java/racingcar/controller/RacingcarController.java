@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.RacingGame;
 import racingcar.dto.GameWinners;
 import racingcar.dto.RoundResult;
@@ -14,13 +15,15 @@ public class RacingcarController {
     private final InputView inputView = new InputView();
 
     public void run() {
-        ParsedInput input = getUserInput();
+        try {
+            ParsedInput input = getUserInput();
+            RacingGame racingGame = RacingGame.initializeRacingGame(input);
 
-        RacingGame racingGame = RacingGame.initializeRacingGame(input);
-
-        playRounds(racingGame);
-
-        printWinners(racingGame);
+            playRounds(racingGame);
+            printWinners(racingGame);
+        } finally {
+            Console.close();
+        }
     }
 
     private ParsedInput getUserInput() {
