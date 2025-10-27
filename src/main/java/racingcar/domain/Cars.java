@@ -33,15 +33,13 @@ public class Cars {
         cars.forEach(this::tryMove);
     }
 
-    public List<Car> getGameWinners() {
-        int maxPosition = findMaxPosition();
-
+    public List<Car> getGameWinners(int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
     }
 
-    private int findMaxPosition() {
+    public int getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
